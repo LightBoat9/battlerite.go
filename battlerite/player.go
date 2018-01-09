@@ -30,7 +30,7 @@ type Player struct {
 	BrawlLosses                  int
 	BattlegroundsWins            int
 	BattlegroundsLosses          int
-	AcctounXP                    int
+	AccountXP                    int
 	AccountLevel                 int
 	TwitchAccountLinked          int
 	VsAiPlayed                   int
@@ -172,7 +172,7 @@ func SinglePlayerFromData(data map[string]interface{}) Player {
 		BrawlLosses:                  brawlLosses,
 		BattlegroundsWins:            battlegroundsWins,
 		BattlegroundsLosses:          battlegroundsLosses,
-		AcctounXP:                    int(stats["25"].(float64)),
+		AccountXP:                    int(stats["25"].(float64)),
 		AccountLevel:                 int(stats["26"].(float64)),
 		TwitchAccountLinked:          twitchAccountLinked,
 		VsAiPlayed:                   int(stats["56"].(float64)),
