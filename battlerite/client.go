@@ -95,8 +95,8 @@ func (client Client) GetStatus() (Status, error) {
 }
 
 // GetPlayer receives a single Player using the players battlerite ID.
-func (client Client) GetPlayer(id string) (Player, error) {
-	URL := fmt.Sprintf("%splayers/%s", BaseURL, id)
+func (client Client) GetPlayer(id int) (Player, error) {
+	URL := fmt.Sprintf("%splayers/%s", BaseURL, strconv.Itoa(id))
 
 	res, err := client.getData(URL)
 	if err != nil {
