@@ -71,6 +71,9 @@ func (client Client) getData(URL string) (Response, error) {
 	if jsonErr != nil {
 		return Response{}, jsonErr
 	}
+	if res.Errors != nil {
+		return res, fmt.Errorf("Something went wrong with the api request, Errors: %v", res.Errors)
+	}
 
 	return res, nil
 }
