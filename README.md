@@ -42,11 +42,11 @@ See [Gamelocker Documentation](https://battlerite-docs.readthedocs.io/en/master/
 
 Return a Status instance, and an error if one occurs.
 
-- **Status struct**
+#### **Status struct**
 
 Contains information about the current status of the gamelocker API.
 
-**Fields**
+- **Fields**
 ```go
 Type    string  
 ID      string  
@@ -66,15 +66,33 @@ fmt.Printf("Current Version %s was released on %s", status.Version, status.Relea
 
 ### **Player**
 
+See [Gamelocker Documentation](https://battlerite-docs.readthedocs.io/en/master/players/players.html)
+
 - **GetPlayer(id string) (Player, error)**
   - id string - The user ID of the player
   
-Returns a Player instance, and an error if one occurs.
+Returns a Player by their ID, and an error if one occurs.
+  
+- **GetPlayersFiltered(filter PlayerFilter) ([]Player, error)**
+  - filter PlayerFilter - The filter to search for players see PlayerFilter struct below
+  
+Returns a slice of Players based on the filter, and an error if one occurs.
 
-- **Player struct**
+#### **PlayerFilter struct**
+Contains filters for searching players with GetPlayersFiltered. 
+Note that only one filter parameter should be used at a time.
+
+- **Fields**
+```go
+  Names    []string
+  UserIDs  []int
+  SteamIDs []int
+```
+
+#### **Player struct**
 Contains information about a single battlerite user.
 
-**Fields**
+- **Fields**
 ```go
   Type                         string 
   ID                           int  
@@ -132,4 +150,33 @@ Every "Character" map[string]int contains the following keys representing the ba
 "Poloma", "Croak", "Freya", "Jumong", "Shifu", 
 "Ezmo", "Bakko", "Rook", "Pestilus", "Destiny", 
 "Raigon", "Blossum", "Thorn", "Alysia"
+```
+
+**Example Use**
+```go
+// Get one player by ID
+player, err := client.GetPlayer(776450744541908992)
+if err != nil {
+  fmt.Println("Error:", err)
+}
+
+fmt.Printf("\nPlayer %s has %d total wins! With Taya they have %d wins!", 
+  player.Name, player.Wins, player.CharacterWins["Taya"])
+  
+// Get multiple players by Name
+filter := battlerite.PlayerFilter{
+  Names: []string{"Averse", "ProsteR18", "Aldys"},
+}
+
+players, err := client.GetPlayersFiltered(filter)
+if err != nil {
+  fmt.Println("Error:", err)
+}
+
+playerNames := []string{}
+for _, plr := range players {
+  playerNames = append(playerNames, plr.Name)
+}
+
+fmt.Printf("\n%d players found! Their names are %s", len(players), strings.Join(playerNames, ", "))
 ```
