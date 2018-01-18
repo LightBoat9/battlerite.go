@@ -95,6 +95,7 @@ var Champions = map[string][2]string{
 	"Raigon":   [2]string{"21", "Swordmaster"},
 	"Blossum":  [2]string{"22", "Druid"},
 	"Thorn":    [2]string{"25", "Thorn"},
+	"Zander":   [2]string{"35", "MirrorMage"},
 	"Alysia":   [2]string{"41", "FrostMage"},
 }
 
@@ -148,6 +149,18 @@ func SinglePlayerFromData(data map[string]interface{}) Player {
 	if stats["27"] != nil {
 		twitchAccountLinked = int(stats["27"].(float64))
 	}
+	gradeScore := 0
+	if stats["4"] != nil {
+		gradeScore = int(stats["4"].(float64))
+	}
+	ratingMean := 0
+	if stats["70"] != nil {
+		ratingMean = int(stats["70"].(float64))
+	}
+	ratingDev := 0
+	if stats["71"] != nil {
+		ratingDev = int(stats["71"].(float64))
+	}
 
 	return Player{
 		Type:                         data["type"].(string),
@@ -158,7 +171,7 @@ func SinglePlayerFromData(data map[string]interface{}) Player {
 		Picture:                      int(stats["picture"].(float64)),
 		Wins:                         int(stats["2"].(float64)),
 		Losses:                       int(stats["3"].(float64)),
-		GradeScore:                   int(stats["4"].(float64)),
+		GradeScore:                   gradeScore,
 		TimePlayed:                   int(stats["8"].(float64)),
 		Ranked2v2Wins:                int(stats["10"].(float64)),
 		Ranked2v2Loses:               int(stats["11"].(float64)),
@@ -176,8 +189,8 @@ func SinglePlayerFromData(data map[string]interface{}) Player {
 		AccountLevel:                 int(stats["26"].(float64)),
 		TwitchAccountLinked:          twitchAccountLinked,
 		VsAiPlayed:                   int(stats["56"].(float64)),
-		RatingMean:                   int(stats["70"].(float64)),
-		RatingDev:                    int(stats["71"].(float64)),
+		RatingMean:                   ratingMean,
+		RatingDev:                    ratingDev,
 		CharacterXP:                  GetChampionData(stats, 11000),
 		CharacterWins:                GetChampionData(stats, 12000),
 		CharacterLosses:              GetChampionData(stats, 13000),
