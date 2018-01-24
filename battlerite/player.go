@@ -122,6 +122,14 @@ func GetChampionData(stats map[string]interface{}, startIndex int) map[string]in
 	return champXP
 }
 
+// Returns some data or 0 if the data is nil
+func zeroIfNil(in interface{}) int {
+	if in != nil {
+		return int(in.(float64))
+	}
+	return 0
+}
+
 // SinglePlayerFromData creates a player out of the data of a single battlerite user
 func SinglePlayerFromData(data map[string]interface{}) Player {
 	links := data["links"].(map[string]interface{})
@@ -129,38 +137,6 @@ func SinglePlayerFromData(data map[string]interface{}) Player {
 	stats := attributes["stats"].(map[string]interface{})
 
 	id, _ := strconv.Atoi(data["id"].(string))
-	brawlWins := 0
-	if stats["18"] != nil {
-		brawlWins = int(stats["18"].(float64))
-	}
-	brawlLosses := 0
-	if stats["19"] != nil {
-		brawlLosses = int(stats["19"].(float64))
-	}
-	battlegroundsWins := 0
-	if stats["22"] != nil {
-		battlegroundsWins = int(stats["22"].(float64))
-	}
-	battlegroundsLosses := 0
-	if stats["23"] != nil {
-		battlegroundsLosses = int(stats["23"].(float64))
-	}
-	twitchAccountLinked := 0
-	if stats["27"] != nil {
-		twitchAccountLinked = int(stats["27"].(float64))
-	}
-	gradeScore := 0
-	if stats["4"] != nil {
-		gradeScore = int(stats["4"].(float64))
-	}
-	ratingMean := 0
-	if stats["70"] != nil {
-		ratingMean = int(stats["70"].(float64))
-	}
-	ratingDev := 0
-	if stats["71"] != nil {
-		ratingDev = int(stats["71"].(float64))
-	}
 
 	return Player{
 		Type:                         data["type"].(string),
@@ -168,29 +144,29 @@ func SinglePlayerFromData(data map[string]interface{}) Player {
 		LinkSelf:                     links["self"].(string),
 		TitleID:                      attributes["titleId"].(string),
 		Name:                         attributes["name"].(string),
-		Picture:                      int(stats["picture"].(float64)),
-		Wins:                         int(stats["2"].(float64)),
-		Losses:                       int(stats["3"].(float64)),
-		GradeScore:                   gradeScore,
-		TimePlayed:                   int(stats["8"].(float64)),
-		Ranked2v2Wins:                int(stats["10"].(float64)),
-		Ranked2v2Loses:               int(stats["11"].(float64)),
-		Ranked3v3Wins:                int(stats["12"].(float64)),
-		Ranked3v3Losses:              int(stats["13"].(float64)),
-		Unranked2v2Wins:              int(stats["14"].(float64)),
-		Unranked2v2Losses:            int(stats["15"].(float64)),
-		Unranked3v3Wins:              int(stats["16"].(float64)),
-		Unranked3v3Losses:            int(stats["17"].(float64)),
-		BrawlWins:                    brawlWins,
-		BrawlLosses:                  brawlLosses,
-		BattlegroundsWins:            battlegroundsWins,
-		BattlegroundsLosses:          battlegroundsLosses,
-		AccountXP:                    int(stats["25"].(float64)),
-		AccountLevel:                 int(stats["26"].(float64)),
-		TwitchAccountLinked:          twitchAccountLinked,
-		VsAiPlayed:                   int(stats["56"].(float64)),
-		RatingMean:                   ratingMean,
-		RatingDev:                    ratingDev,
+		Picture:                      zeroIfNil(stats["picture"]),
+		Wins:                         zeroIfNil(stats["2"]),
+		Losses:                       zeroIfNil(stats["3"]),
+		GradeScore:                   zeroIfNil(stats["4"]),
+		TimePlayed:                   zeroIfNil(stats["8"]),
+		Ranked2v2Wins:                zeroIfNil(stats["10"]),
+		Ranked2v2Loses:               zeroIfNil(stats["11"]),
+		Ranked3v3Wins:                zeroIfNil(stats["12"]),
+		Ranked3v3Losses:              zeroIfNil(stats["13"]),
+		Unranked2v2Wins:              zeroIfNil(stats["14"]),
+		Unranked2v2Losses:            zeroIfNil(stats["15"]),
+		Unranked3v3Wins:              zeroIfNil(stats["16"]),
+		Unranked3v3Losses:            zeroIfNil(stats["17"]),
+		BrawlWins:                    zeroIfNil(stats["18"]),
+		BrawlLosses:                  zeroIfNil(stats["19"]),
+		BattlegroundsWins:            zeroIfNil(stats["22"]),
+		BattlegroundsLosses:          zeroIfNil(stats["23"]),
+		AccountXP:                    zeroIfNil(stats["25"]),
+		AccountLevel:                 zeroIfNil(stats["26"]),
+		TwitchAccountLinked:          zeroIfNil(stats["27"]),
+		VsAiPlayed:                   zeroIfNil(stats["56"]),
+		RatingMean:                   zeroIfNil(stats["70"]),
+		RatingDev:                    zeroIfNil(stats["71"]),
 		CharacterXP:                  GetChampionData(stats, 11000),
 		CharacterWins:                GetChampionData(stats, 12000),
 		CharacterLosses:              GetChampionData(stats, 13000),
