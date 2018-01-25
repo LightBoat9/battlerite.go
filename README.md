@@ -149,7 +149,7 @@ Every "Character" map[string]int contains the following keys representing the ba
 "Oldur", "Ashka", "Varesh", "Pearl", "Taya", 
 "Poloma", "Croak", "Freya", "Jumong", "Shifu", 
 "Ezmo", "Bakko", "Rook", "Pestilus", "Destiny", 
-"Raigon", "Blossum", "Thorn", "Alysia"
+"Raigon", "Blossum", "Thorn", "Alysia", "Zander"
 ```
 
 **Example Use**
