@@ -14,7 +14,7 @@ import (
 
 // BaseURL for the Gamelocker API using their current DC01 Datacenter.
 // See: https://battlerite-docs.readthedocs.io/en/latest/datacenters/datacenters.html
-const BaseURL = "https://api.dc01.gamelockerapp.com/shards/global/"
+const BaseURL = "https://api.developer.battlerite.com/shards/global/"
 
 // http request client with a timeout of 10 seconds.
 var request = &http.Client{Timeout: 10 * time.Second}
@@ -80,7 +80,7 @@ func (client Client) getData(URL string) (Response, error) {
 
 // GetStatus receives the Status of the Gamelocker battlerite API.
 func (client Client) GetStatus() (Status, error) {
-	URL := "https://api.dc01.gamelockerapp.com/status"
+	URL := "https://api.developer.battlerite.com/status"
 
 	res, err := client.getData(URL)
 

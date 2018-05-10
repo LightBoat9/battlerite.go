@@ -1,6 +1,8 @@
 package battlerite
 
-import "strconv"
+import (
+	"strconv"
+)
 
 // Team contains information about a battlerite team.
 // See https://battlerite-docs.readthedocs.io/en/master/teams/teams.html
@@ -44,7 +46,8 @@ func SingleTeamFromData(data map[string]interface{}) Team {
 
 	members := []int{}
 	for _, user := range stats["members"].([]interface{}) {
-		members = append(members, int(user.(float64)))
+		str, _ := strconv.Atoi(user.(string))
+		members = append(members, str)
 	}
 
 	return Team{

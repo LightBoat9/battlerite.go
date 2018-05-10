@@ -96,7 +96,9 @@ var Champions = map[string][2]string{
 	"Blossum":  [2]string{"22", "Druid"},
 	"Thorn":    [2]string{"25", "Thorn"},
 	"Zander":   [2]string{"35", "MirrorMage"},
+	"Ulric":    [2]string{"39", "Paladin"},
 	"Alysia":   [2]string{"41", "FrostMage"},
+	"Jamila":   [2]string{"43", "Stalker"},
 }
 
 // GetChampionData returns a map of the data for each battlerite champion.
