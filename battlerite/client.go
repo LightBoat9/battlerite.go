@@ -154,7 +154,7 @@ func (client Client) GetTeamsFiltered(filter TeamFilter) ([]Team, error) {
 		return []Team{}, errors.New("TeamFilter must contain PlayerIDs")
 	}
 
-	season := fmt.Sprintf("&tag[season]=%s", strconv.Itoa(filter.Season))
+	season := fmt.Sprintf("&filter[season]=%s", strconv.Itoa(filter.Season))
 
 	// Convert []int -> []string
 	strPlayerIDs := []string{}
@@ -162,7 +162,7 @@ func (client Client) GetTeamsFiltered(filter TeamFilter) ([]Team, error) {
 		strPlayerIDs = append(strPlayerIDs, strconv.Itoa(id))
 	}
 
-	playerIDs := fmt.Sprintf("&tag[playerIds]=%s", strings.Join(strPlayerIDs, ","))
+	playerIDs := fmt.Sprintf("&filter[playerIds]=%s", strings.Join(strPlayerIDs, ","))
 
 	URL := fmt.Sprintf("%steams?%s%s", BaseURL, season, playerIDs)
 
