@@ -1,4 +1,4 @@
-package battlerite
+package battleritego
 
 // Telemetry contains a matches telemetry data.
 // See https://battlerite-docs.readthedocs.io/en/master/telemetry/telemetry.html

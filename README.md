@@ -1,16 +1,16 @@
-# battlerite.go
+# battleritego
 Golang wrapper around the official Battlerite API
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/LightBoat9/battlerite.go/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/LightBoat9/battleritego/blob/master/LICENSE) file for details
 
 ## Installing
 
 Run this in console to install
 
 ```go 
-go get github.com/LightBoat9/battlerite.go/battlerite
+go get github.com/LightBoat9/battleritego
 ```
 
 # Usage
@@ -19,7 +19,7 @@ go get github.com/LightBoat9/battlerite.go/battlerite
 
 ```go
 import (
-  "github.com/LightBoat9/battlerite.go/battlerite"
+  "github.com/LightBoat9/battleritego"
 )
 ```
 

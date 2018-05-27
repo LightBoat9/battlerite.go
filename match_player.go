@@ -1,4 +1,4 @@
-package battlerite
+package battleritego
 
 // MatchPlayer holds information about a player from a match
 type MatchPlayer struct {

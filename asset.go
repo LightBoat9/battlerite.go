@@ -1,5 +1,5 @@
-// Package battlerite provides access to the battlerite game data service.
-package battlerite
+// Package battleritego provides access to the battlerite game data service.
+package battleritego
 
 // Asset contains data for match assets, mainly used to pull telemetry data
 // for the match.

@@ -1,4 +1,4 @@
-package battlerite
+package battleritego
 
 import (
 	"strconv"

@@ -1,4 +1,4 @@
-package battlerite
+package battleritego
 
 // Round contains information about a round in a match.
 // See match.go for more information.

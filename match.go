@@ -1,4 +1,4 @@
-package battlerite
+package battleritego
 
 // MatchFilter contains filter parameters for searching matches.
 // See https://battlerite-docs.readthedocs.io/en/master/matches/matches.html#get-a-collection-of-matches
