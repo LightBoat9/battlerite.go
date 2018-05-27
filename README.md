@@ -29,7 +29,7 @@ Gather data from the API using the Client type. Instance a Client type using an 
 Register an app and get an API key [here](https://developer.battlerite.com/).
 
 ```go
-client := battlerite.Client{ APIKey }
+client := battleritego.Client{ APIKey }
 ```
 
 ## Reference
