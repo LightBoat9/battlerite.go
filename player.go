@@ -1,7 +1,6 @@
 package battleritego
 
 import (
-	"fmt"
 	"log"
 	"strconv"
 )
@@ -140,8 +139,6 @@ func SinglePlayerFromData(data map[string]interface{}) Player {
 	stats := attributes["stats"].(map[string]interface{})
 
 	id, _ := strconv.Atoi(data["id"].(string))
-
-	fmt.Println(stats)
 
 	return Player{
 		Type:                         data["type"].(string),
