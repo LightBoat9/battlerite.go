@@ -1,6 +1,7 @@
 package battleritego
 
 import (
+	"fmt"
 	"log"
 	"strconv"
 )
@@ -140,6 +141,8 @@ func SinglePlayerFromData(data map[string]interface{}) Player {
 
 	id, _ := strconv.Atoi(data["id"].(string))
 
+	fmt.Println(stats)
+
 	return Player{
 		Type:                         data["type"].(string),
 		ID:                           id,
@@ -151,14 +154,14 @@ func SinglePlayerFromData(data map[string]interface{}) Player {
 		Losses:                       zeroIfNil(stats["3"]),
 		GradeScore:                   zeroIfNil(stats["4"]),
 		TimePlayed:                   zeroIfNil(stats["8"]),
-		Ranked2v2Wins:                zeroIfNil(stats["10"]),
-		Ranked2v2Loses:               zeroIfNil(stats["11"]),
-		Ranked3v3Wins:                zeroIfNil(stats["12"]),
-		Ranked3v3Losses:              zeroIfNil(stats["13"]),
-		Unranked2v2Wins:              zeroIfNil(stats["14"]),
-		Unranked2v2Losses:            zeroIfNil(stats["15"]),
-		Unranked3v3Wins:              zeroIfNil(stats["16"]),
-		Unranked3v3Losses:            zeroIfNil(stats["17"]),
+		Unranked2v2Wins:              zeroIfNil(stats["10"]),
+		Unranked2v2Losses:            zeroIfNil(stats["11"]),
+		Unranked3v3Wins:              zeroIfNil(stats["12"]),
+		Unranked3v3Losses:            zeroIfNil(stats["13"]),
+		Ranked2v2Wins:                zeroIfNil(stats["14"]),
+		Ranked2v2Loses:               zeroIfNil(stats["15"]),
+		Ranked3v3Wins:                zeroIfNil(stats["16"]),
+		Ranked3v3Losses:              zeroIfNil(stats["17"]),
 		BrawlWins:                    zeroIfNil(stats["18"]),
 		BrawlLosses:                  zeroIfNil(stats["19"]),
 		BattlegroundsWins:            zeroIfNil(stats["22"]),
